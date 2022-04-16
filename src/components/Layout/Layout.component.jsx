@@ -7,12 +7,19 @@ const useStyles = makeStyles(() => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         minHeight: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'white',
         overflow: 'hidden'
     },
+    contentContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        maxWidth: '1000px'
+    }
 }));
 
 export default function Layout({
@@ -21,11 +28,13 @@ export default function Layout({
     backgd = ''
 }) {
     const classes = useStyles()
-    
+
     return (
         <Box style={{ backgroundImage: `url(${backgd})` }} className={classes.root}>
             {header ? <Header /> : null}
-            {children}
+            <Box className={classes.contentContainer}>
+                {children}
+            </Box>
         </Box>
     );
 }

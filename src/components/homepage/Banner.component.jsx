@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
         alignSelf: 'center',
         height: '75vh',
         width: '100%',
-        maxWidth: '1000px',
         padding: '100px',
         //en pantallas chicas centra la imagen
         [theme.breakpoints.down('sm')]: {
