@@ -1,9 +1,9 @@
 
 const PALETTE = {
   primary: {
-    main: '#76A9EC',
-    light: '#F1F6FB',
-    dark: '#6AA1EA'
+    main: '#5493E7',
+    light: '#76A9EC',
+    dark: '#5574A5'
 },
 secondary: {
     main: '#23C68C',
@@ -36,5 +36,10 @@ secondary: {
 
 export const baseTheme = {
   palette: PALETTE,
-
+  borderRadius: {
+    small: '5px',
+    main: '20px',
+    large: '40px',
+    secondary: '70px'
+  }
 }
