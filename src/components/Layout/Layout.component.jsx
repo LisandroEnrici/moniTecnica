@@ -8,11 +8,11 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        minHeight: '100vh',
+        height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: 'white',
-        overflow: 'hidden'
+        overflowY: 'scroll'
     },
     contentContainer: {
         display: 'flex',

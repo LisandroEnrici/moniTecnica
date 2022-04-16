@@ -6,9 +6,9 @@ import Logo from '../../assets/logos/logoAzul.svg'
 
 const useStyles = makeStyles(() => ({
     appBar: {
+        alignItems: 'center',
         background: '#ffffff',
-        opacity: '0.84',
-        alignItems: 'center'
+        opacity: '0.84'
     },
     toolBar: {
         width: '100%',
@@ -21,7 +21,7 @@ export default function Header() {
     const classes = useStyles();
 
     return (
-        <AppBar position="static" className={classes.appBar}>
+        <AppBar position="sticky" className={classes.appBar}>
             <Toolbar className={classes.toolBar} >
                 <img src={Logo} alt="MONI" height="26"/>
             </Toolbar>
