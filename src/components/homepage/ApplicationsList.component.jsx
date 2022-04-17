@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function ApplicationsList({ applicationsRes, loading }) {
+export default function ApplicationsList({ applicationsRes, loading, onCreate}) {
     const classes = useStyles()
     let {data, ok} = applicationsRes
 
@@ -41,7 +41,7 @@ export default function ApplicationsList({ applicationsRes, loading }) {
             <Box className={classes.listHead}>
                 <Typography variant='h5' className={classes.headItem}>Solicitudes de Préstamo:</Typography>
                 <Tooltip title='Nueva solicitud'>
-                    <IconButton className={classes.headItem} >
+                    <IconButton className={classes.headItem} onClick={onCreate}>
                         <PersonAddIcon fontSize="large" />
                     </IconButton>
                 </Tooltip>
