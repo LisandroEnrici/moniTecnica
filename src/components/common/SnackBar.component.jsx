@@ -25,7 +25,7 @@ export default function SnackBar ({ snackOptions, setSnackOptions }) {
       return
     }
 
-    setSnackOptions(false)
+    setSnackOptions({ open: false, severity: '', message: '' })
   }
 
   return (
