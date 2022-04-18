@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
 import { useMediaQuery, useTheme } from '@material-ui/core';
 import ApplicationForm from '../../components/common/ApplicationForm.component';
+import { createApplication } from '../../webServices/webServices.controller';
 
 const DEFAULT_VALUES = {
     name: '',
@@ -27,8 +28,8 @@ export default function NewApplicationContainer({ onClose, open }) {
 
     const handleOk = (event) => {
         event.preventDefault()
+        createApplication(values)
         setValues(DEFAULT_VALUES)
-        console.log('ok')
         onClose();
     };
 
