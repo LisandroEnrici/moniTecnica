@@ -48,14 +48,14 @@ export const createApplication = async function (data) {
             'dni': dni,
             'loanStatus': loanStatus
         }
-        console.log(JSON.stringify(bodyData))
+        
         let result = await fetch(url, {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify(bodyData)
         })
             .then(res => res.json())
-            .then(data => { return data })
+            .then(data => { return { data: {}, ok: true } })
             .catch(error => { console.error('Error:', error); return { data: {}, ok: false } })
         return (result)
     }
