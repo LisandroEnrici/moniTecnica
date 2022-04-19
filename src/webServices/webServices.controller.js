@@ -2,7 +2,7 @@ import urlWebServices from "./servicesUrl.enum";
 
 //retorna todas las solicitudes de prestamo
 export const getApplications = async function () {
-    const url = urlWebServices.apiApplications;
+    const url = urlWebServices.getApplications;
 
     let result = await fetch(url, {
         method: 'GET',
@@ -39,7 +39,7 @@ export const createApplication = async function (data) {
         const loanStatus = status.status === "approve" ? "APROVED" : status.status === "rejected" ? "REJECTED" : "UNKNOWN"
 
         //Almacena los datos de la solicitud
-        const url = urlWebServices.apiApplications
+        const url = urlWebServices.getApplications
         const bodyData = {
             'name': name,
             'last': last,
@@ -64,14 +64,41 @@ export const createApplication = async function (data) {
 
 //Elimina una solicitud
 export const deleteApplication = async function (id) {
-    const url = urlWebServices.delApplications + id + '.json';
+    const url = urlWebServices.apiApplication + id + '.json';
 
     let result = await fetch(url, {
         method: 'DELETE',
-        mode: 'cors'
+        mode: 'cors',
+        
     })
         .then(res => res.json())
         .then(() => { return { ok: true } })
         .catch(error => { console.error('Error:', error); return { ok: false } })
     return (result)
-};
+}
+
+//Modifica los parámetros de una solicitud
+export const editApplication = async function (data) {
+    const { name, last, genre, email, dni, id, loanStatus} = data
+
+    //Almacena los datos de la solicitud
+    const url = urlWebServices.apiApplication + id + '.json';
+    const bodyData = {
+        'name': name,
+        'last': last,
+        'email': email,
+        'genre': genre,
+        'dni': dni,
+        'loanStatus': loanStatus
+    }
+
+    let result = await fetch(url, {
+        method: 'PATCH',
+        mode: 'cors',
+        body: JSON.stringify(bodyData)
+    })
+        .then(res => res.json())
+        .then(() => { return { ok: true } })
+        .catch(error => { console.error('Error:', error); return { ok: false } })
+    return (result)
+}

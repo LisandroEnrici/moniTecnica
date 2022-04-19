@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const GENDERS = ['Femenino', 'Masculino', 'No especifica']
+const STATES = ['APROVED', 'REJECTED']
 
 export default function ApplicationForm({ values, handleChange }) {
     const classes = useStyles()
-    const { name, last, genre, email, dni } = values
+    const { name, last, genre, email, dni, loanStatus } = values ? values : ''
 
     return (
         <Box className={classes.main}>
@@ -58,6 +59,24 @@ export default function ApplicationForm({ values, handleChange }) {
                 type='number'
                 onChange={handleChange('dni')}
                 value={dni} />
+
+            {/* Solo aparece cuando se quiere editar */}
+            {loanStatus &&
+                <TextField
+                    select
+                    label='Estado'
+                    value={loanStatus}
+                    onChange={handleChange('loanStatus')}
+                    variant='outlined'
+                    required
+                >
+                    {STATES.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            }
         </Box>
     )
 }

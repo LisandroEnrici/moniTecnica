@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function ApplicationsList({ applicationsRes, loading, onCreate, onDelete}) {
+export default function ApplicationsList({ applicationsRes, loading, onCreate, onDelete, onEdit}) {
     const classes = useStyles()
     let {data, ok} = applicationsRes
 
@@ -63,7 +63,7 @@ export default function ApplicationsList({ applicationsRes, loading, onCreate, o
                                         {
                                             Object.entries(data).map(([key, application]) => {
                                                 return (
-                                                    <ApplicationCard application={application} key={key} id={key} onDelete={onDelete}/>
+                                                    <ApplicationCard application={application} key={key} id={key} onDelete={onDelete} onEdit={onEdit} />
                                                 )
                                             })
                                         }

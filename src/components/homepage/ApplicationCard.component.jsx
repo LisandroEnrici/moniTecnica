@@ -40,10 +40,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function ApplicationCard({ application, id, onDelete }) {
+export default function ApplicationCard({ application, id, onDelete, onEdit }) {
     const classes = useStyles()
-    const handleDelete = () =>{
+    const handleDelete = (event) => {
+        event.preventDefault()
         onDelete(id)
+    }
+    const handleEdit = (event) => {
+        event.preventDefault()
+        onEdit({ ...application, id: id })
     }
 
     return (
@@ -58,7 +63,7 @@ export default function ApplicationCard({ application, id, onDelete }) {
                 <StatusTag status={application.loanStatus} />
                 <Box className={classes.buttonContainer}>
                     <Tooltip title='Editar'>
-                        <IconButton className={classes.editar}>
+                        <IconButton className={classes.editar} onClick={handleEdit}>
                             <EditIcon />
                         </IconButton>
                     </Tooltip>

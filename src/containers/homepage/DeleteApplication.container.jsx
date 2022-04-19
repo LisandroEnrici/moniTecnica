@@ -7,13 +7,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { deleteApplication } from '../../webServices/webServices.controller';
 import { CircularProgress } from '@material-ui/core';
-import SnackBar from '../../components/common/SnackBar.component';
 
 
 //Solicita la confirmación de la eliminación si el valor toDelete es distinto de ''
-export default function DeleteApplicationContainer({ toDelete, setToDelete }) {
+export default function DeleteApplicationContainer({ toDelete, setToDelete, setSnackOp }) {
     const [loading, setLoading] = useState(false)
-    const [snackOp, setSnackOp] = useState({ open: false, severity: '', message: '' })
 
     const handleClose = () => {
         setToDelete('')
@@ -39,7 +37,7 @@ export default function DeleteApplicationContainer({ toDelete, setToDelete }) {
                 <DialogTitle >Eliminar solicitud</DialogTitle>
                 <DialogContent>
                     {loading ?
-                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <CircularProgress color="secondary" />
                         </div>
                         :
@@ -57,7 +55,6 @@ export default function DeleteApplicationContainer({ toDelete, setToDelete }) {
                     </Button>
                 </DialogActions>
             </Dialog>
-            <SnackBar snackOptions={snackOp} setSnackOptions={setSnackOp} />
         </>
     )
 }
