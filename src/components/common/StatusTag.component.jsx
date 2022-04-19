@@ -4,9 +4,10 @@ import { Box, makeStyles, Typography } from '@material-ui/core'
 const useStyle = makeStyles((theme) => ({
     container: {
         display: 'flex',
-        borderRadius: '4px',
+        borderRadius: `${theme.borderRadius.small}`,
         padding: '4px 8px',
         textAlign: 'center',
+        width: 'fit-content'
     },
     aproved: {
         backgroundColor: `${theme.palette.success.main}`

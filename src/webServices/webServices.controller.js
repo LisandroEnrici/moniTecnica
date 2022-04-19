@@ -55,7 +55,7 @@ export const createApplication = async function (data) {
             body: JSON.stringify(bodyData)
         })
             .then(res => res.json())
-            .then(data => { return { data: {}, ok: true } })
+            .then(data => { return { data: { name: name, last: last, loanStatus: loanStatus }, ok: true } })
             .catch(error => { console.error('Error:', error); return { data: {}, ok: false } })
         return (result)
     }
@@ -69,7 +69,7 @@ export const deleteApplication = async function (id) {
     let result = await fetch(url, {
         method: 'DELETE',
         mode: 'cors',
-        
+
     })
         .then(res => res.json())
         .then(() => { return { ok: true } })
@@ -79,7 +79,7 @@ export const deleteApplication = async function (id) {
 
 //Modifica los parámetros de una solicitud
 export const editApplication = async function (data) {
-    const { name, last, genre, email, dni, id, loanStatus} = data
+    const { name, last, genre, email, dni, id, loanStatus } = data
 
     //Almacena los datos de la solicitud
     const url = urlWebServices.apiApplication + id + '.json';

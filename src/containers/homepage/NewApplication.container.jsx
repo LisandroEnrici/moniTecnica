@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import { CircularProgress, useMediaQuery, useTheme } from '@material-ui/core';
 import ApplicationForm from '../../components/common/ApplicationForm.component';
 import { createApplication } from '../../webServices/webServices.controller';
+import ApplicationResume from '../../components/common/ApplicationResume.component';
 
 const DEFAULT_VALUES = {
     name: '',
@@ -21,9 +22,11 @@ export default function NewApplicationContainer({ onClose, open, setSnackOp }) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
     const [values, setValues] = useState(DEFAULT_VALUES)
     const [loading, setLoading] = useState(false)
+    const [result, setResult] = useState(undefined)
 
     const handleCancel = () => {
         setValues(DEFAULT_VALUES)
+        setResult(undefined)
         onClose();
     };
 
@@ -32,14 +35,19 @@ export default function NewApplicationContainer({ onClose, open, setSnackOp }) {
         setLoading(true)
         const res = await createApplication(values)
         if (res.ok) {
-            setValues(DEFAULT_VALUES)
-            setSnackOp({ open: true, severity: 'success', message: 'La solicitud se registró exitosamente' })
-            onClose();
+            setResult(res.data)
         } else {
             setSnackOp({ open: true, severity: 'error', message: 'Error: Revise los datos e intente nuevamente' })
         }
         setLoading(false)
     };
+
+    const handleContinue = (event) => {
+        event.preventDefault();
+        setValues(DEFAULT_VALUES)
+        setResult(undefined)
+        onClose();
+    }
 
     const handleChange = (key) => (event) => {
         event.preventDefault()
@@ -56,21 +64,36 @@ export default function NewApplicationContainer({ onClose, open, setSnackOp }) {
                 <form onSubmit={handleOk} style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%' }}>
                     <DialogTitle>Crear nueva solicitud de préstamo</DialogTitle>
                     <DialogContent dividers>
-                        {loading ?
-                            <div style={{ display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                            {loading ?
                                 <CircularProgress color="secondary" />
-                            </div>
-                            :
-                            <ApplicationForm values={values} handleChange={handleChange} />
-                        }
+                                :
+                                <>
+                                    {result ?
+                                        /* Muestra un resumen del resultado de la solicitud */
+                                        <ApplicationResume name={result.name} last={result.last} status={result.loanStatus} />
+                                        :
+                                        <ApplicationForm values={values} handleChange={handleChange} />
+                                    }
+                                </>
+                            }
+                        </div>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleCancel} disabled={loading}>
-                            Cancelar
-                        </Button>
-                        <Button type='submit' color="secondary" disabled={loading}>
-                            Crear
-                        </Button>
+                        {result ?
+                            <Button onClick={handleContinue} color="secondary" disabled={loading}>
+                                Continuar
+                            </Button>
+                            :
+                            <>
+                                <Button onClick={handleCancel} disabled={loading}>
+                                    Cancelar
+                                </Button>
+                                <Button type='submit' color="secondary" disabled={loading}>
+                                    Crear
+                                </Button>
+                            </>
+                        }
                     </DialogActions>
                 </form >
             </Dialog>

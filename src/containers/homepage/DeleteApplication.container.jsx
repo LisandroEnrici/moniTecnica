@@ -35,7 +35,7 @@ export default function DeleteApplicationContainer({ toDelete, onClose, setSnack
                 onClose={handleClose}
             >
                 <DialogTitle >Eliminar solicitud</DialogTitle>
-                <DialogContent>
+                <DialogContent dividers>
                     {loading ?
                         <div style={{ display: 'flex', width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <CircularProgress color="secondary" />
