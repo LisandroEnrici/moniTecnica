@@ -14,27 +14,29 @@ export default function ApplicationsListContainer() {
     const [toEdit, setToEdit] = useState(undefined)
     const [snackOp, setSnackOp] = useState({ open: false, severity: '', message: '' })
 
+    async function fetchData() {
+        const res = await getApplications()
+        setApplicationsRes(res)
+    }
+
     useEffect(() => {
-        async function fetchData() {
-            const res = await getApplications()
-            setApplicationsRes(res)
-        }
         fetchData()
         setLoading(false)
     }, [])
 
     const onCreate = () => setOpenCreate(true)
-    const onCloseCreate = () => setOpenCreate(false)
+    const onCloseCreate = () => { fetchData(); setOpenCreate(false) }
     const onDelete = (id) => setToDelete(id)
+    const onCloseDelete = () => { fetchData(); setToDelete('') }
     const onEdit = (application) => setToEdit(application)
-    const onCloseEdit = () => setToEdit(undefined)
-    
+    const onCloseEdit = () => { fetchData(); setToEdit(undefined)}
+
     return (
         <>
             <ApplicationsList applicationsRes={applicationsRes} loading={loading} onCreate={onCreate} onDelete={onDelete} onEdit={onEdit} />
             <NewApplicationContainer open={openCreate} onClose={onCloseCreate} setSnackOp={setSnackOp} />
-            <DeleteApplicationContainer toDelete={toDelete} setToDelete={setToDelete} setSnackOp={setSnackOp} />
-            {Boolean(toEdit) && <EditApplicationContainer onClose={onCloseEdit} toEdit={toEdit} setSnackOp={setSnackOp}/>}
+            <DeleteApplicationContainer toDelete={toDelete} onClose={onCloseDelete} setSnackOp={setSnackOp} />
+            {Boolean(toEdit) && <EditApplicationContainer onClose={onCloseEdit} toEdit={toEdit} setSnackOp={setSnackOp} />}
             <SnackBar snackOptions={snackOp} setSnackOptions={setSnackOp} />
         </>
     )

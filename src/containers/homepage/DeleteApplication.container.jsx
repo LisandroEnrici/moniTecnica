@@ -10,11 +10,11 @@ import { CircularProgress } from '@material-ui/core';
 
 
 //Solicita la confirmación de la eliminación si el valor toDelete es distinto de ''
-export default function DeleteApplicationContainer({ toDelete, setToDelete, setSnackOp }) {
+export default function DeleteApplicationContainer({ toDelete, onClose, setSnackOp }) {
     const [loading, setLoading] = useState(false)
 
     const handleClose = () => {
-        setToDelete('')
+        onClose()
     };
     const handleConfirm = async () => {
         setLoading(true)
@@ -25,7 +25,7 @@ export default function DeleteApplicationContainer({ toDelete, setToDelete, setS
             setSnackOp({ open: true, severity: 'error', message: 'Error: No se pudo eliminar la solicitud, intente nuevamente' })
         }
         setLoading(false)
-        setToDelete('')
+        onClose()
     };
 
     return (
