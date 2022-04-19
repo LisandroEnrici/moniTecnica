@@ -48,7 +48,7 @@ export const createApplication = async function (data) {
             'dni': dni,
             'loanStatus': loanStatus
         }
-        
+
         let result = await fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -61,3 +61,17 @@ export const createApplication = async function (data) {
     }
 
 }
+
+//Elimina una solicitud
+export const deleteApplication = async function (id) {
+    const url = urlWebServices.delApplications + id + '.json';
+
+    let result = await fetch(url, {
+        method: 'DELETE',
+        mode: 'cors'
+    })
+        .then(res => res.json())
+        .then(() => { return { ok: true } })
+        .catch(error => { console.error('Error:', error); return { ok: false } })
+    return (result)
+};

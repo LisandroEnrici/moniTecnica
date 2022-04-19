@@ -40,8 +40,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function ApplicationCard({ application }) {
+export default function ApplicationCard({ application, id, onDelete }) {
     const classes = useStyles()
+    const handleDelete = () =>{
+        onDelete(id)
+    }
 
     return (
         <Paper className={classes.main}>
@@ -60,7 +63,7 @@ export default function ApplicationCard({ application }) {
                         </IconButton>
                     </Tooltip>
                     <Tooltip title='Eliminar'>
-                        <IconButton className={classes.eliminar} >
+                        <IconButton className={classes.eliminar} onClick={handleDelete}>
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>

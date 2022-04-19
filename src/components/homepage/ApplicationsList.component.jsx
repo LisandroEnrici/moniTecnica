@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     listContainer: {
         display: 'flex',
         minHeight: '300px',
-        flexDirection: 'column',
+        flexDirection: 'column-reverse',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '20px',
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function ApplicationsList({ applicationsRes, loading, onCreate}) {
+export default function ApplicationsList({ applicationsRes, loading, onCreate, onDelete}) {
     const classes = useStyles()
     let {data, ok} = applicationsRes
 
@@ -57,13 +57,13 @@ export default function ApplicationsList({ applicationsRes, loading, onCreate}) 
                     <>
                         {ok ?
                             <>
-                                {Object.keys(data).length ?
+                                {data && Object.keys(data).length ?
                                     /* Se muestran las solicitudes */
                                     <>
                                         {
-                                            Object.values(data).map((application, index) => {
+                                            Object.entries(data).map(([key, application]) => {
                                                 return (
-                                                    <ApplicationCard application={application} key={index}/>
+                                                    <ApplicationCard application={application} key={key} id={key} onDelete={onDelete}/>
                                                 )
                                             })
                                         }
