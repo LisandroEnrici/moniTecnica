@@ -16,7 +16,7 @@ const useStyle = makeStyles((theme) => ({
         backgroundColor: `${theme.palette.error.main}`
     },
     text: {
-        color:'white',
+        color: 'white',
         fontSize: '15px',
         [theme.breakpoints.down('sm')]: {
             fontSize: '12px'
@@ -37,6 +37,9 @@ export default function StatusTag({ status }) {
         case 'REJECTED':
             statusLbl = 'RECHAZADO'
             style += ' ' + classes.rejected
+            break;
+        default:
+            statusLbl = 'DESCONOCIDO'
             break;
     }
 
