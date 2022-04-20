@@ -15,6 +15,9 @@ const useStyle = makeStyles((theme) => ({
     rejected: {
         backgroundColor: `${theme.palette.error.main}`
     },
+    unknown: {
+        backgroundColor: `${theme.palette.grayScale.g300}`
+    },
     text: {
         color: 'white',
         fontSize: '15px',
@@ -40,6 +43,7 @@ export default function StatusTag({ status }) {
             break;
         default:
             statusLbl = 'DESCONOCIDO'
+            style += ' ' + classes.unknown
             break;
     }
 
