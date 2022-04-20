@@ -10,7 +10,7 @@ import { editApplication } from '../../webServices/webServices.controller';
 
 export default function EditApplicationContainer({ onClose, toEdit, setSnackOp }) {
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('xs'));
     const [values, setValues] = useState(toEdit)
     const [loading, setLoading] = useState(false)
     const openDialog = Boolean(values)
