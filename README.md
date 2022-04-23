@@ -1,9 +1,10 @@
+# MONI - Préstamos
 ## Introducción
 Proyecto realizado con [Create React App](https://github.com/facebook/create-react-app).
 Aplicación de consulta, alta, baja y modificación de solicitudes de préstamo, realizada para la prueba téctina de MONI Argentina.
 
 ## Estado del proyecto
-El desarrollo del proyecto se encuentra finalizado, pendiente de despliegue.
+El desarrollo del proyecto se encuentra finalizado, y corriendo en https://moni-prestamos.herokuapp.com/.
 
 ## Tecnologías
 
