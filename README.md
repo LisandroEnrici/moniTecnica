@@ -16,7 +16,12 @@ Proyecto realizado con [Create React App](https://github.com/facebook/create-rea
 
 ---
 ## Estado del proyecto
-El desarrollo front-end se encuentra corriendo en [https://moni-prestamos.netlify.app](https://moni-prestamos.netlify.app), por el momento las credenciales para la API fueron dadas de baja por la empresa MONI; por lo que, por el momento, la aplicación no es capaz de almacenar ni consultar información. En futuras actualizaciones se procederá a generar una API propia con el fin de brindar soporte a las fucionalidades de la misma.
+El desarrollo front-end se encuentra corriendo en [https://moni-prestamos.netlify.app](https://moni-prestamos.netlify.app).
+
+---
+## Futuros cambios
+Se puede incluir un sistema de autenticación.
+Se puede agregar la carga de imagenes a las solicitudes.
 
 ---
 ## Tecnologías
