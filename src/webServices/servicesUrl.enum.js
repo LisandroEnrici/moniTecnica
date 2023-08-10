@@ -1,7 +1,7 @@
 
 const urlWebServices = {
-    getApplications: 'https://wired-torus-98413.firebaseio.com/users.json',
-    apiApplication: 'https://wired-torus-98413.firebaseio.com/users/', // concatenar con el id y ".json"
+    getApplications: 'https://moni-tecnica-backend-default-rtdb.firebaseio.com/candidates.json',
+    apiApplication: 'https://moni-tecnica-backend-default-rtdb.firebaseio.com/candidates/', // concatenar con el id y ".json"
     scorePerson: 'https://api.moni.com.ar/api/v4/scoring/pre-score/' // concatenar con dni
 }
 
