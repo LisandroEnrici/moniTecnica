@@ -16,7 +16,7 @@ Proyecto realizado con [Create React App](https://github.com/facebook/create-rea
 
 ---
 ## Estado del proyecto
-El desarrollo del proyecto se encuentra finalizado, y corriendo en https://moni-prestamos.herokuapp.com.
+El desarrollo front-end se encuentra corriendo en [https://moni-prestamos.netlify.app](https://moni-prestamos.netlify.app), por el momento las credenciales para la API fueron dadas de baja por la empresa MONI; por lo que, por el momento, la aplicación no es capaz de almacenar ni consultar información. En futuras actualizaciones se procederá a generar una API propia con el fin de brindar soporte a las fucionalidades de la misma.
 
 ---
 ## Tecnologías
@@ -24,7 +24,7 @@ El desarrollo del proyecto se encuentra finalizado, y corriendo en https://moni-
 #### **Node JS:**
 - ##### Versión 14.16.1
 #### **React JS:**
-- ##### Versión 18.0.0
+- ##### Versión 17.0.0
 #### **Material-UI:**
 - ##### Versión 4.12.4
 
